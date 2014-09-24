@@ -455,20 +455,24 @@ class Launchpad:
 	#-- Dir specifies: -1 to left, 0 no scroll, 1 to right
 	#-- The "no scroll" characters are sent 8 times to have a comparable speed.
 	#-------------------------------------------------------------------------------------
-	def LedCtrlString( self, str, red, green, dir = 0 ):
+	def LedCtrlString( self, str, red, green, dir = 0, delay = 50):
 
 		if dir == -1:
 			for i in str:
 				for off in range(5,-8,-1):
 					self.LedCtrlChar(i, red, green, off)
+					time.wait(delay)
 		elif dir == 0:
 			for i in str:
 				for off in range(4):
 					self.LedCtrlChar(i, red, green)
+					time.wait(delay)
 		elif dir == 1:
 			for i in str:
 				for off in range(-5,8):
 					self.LedCtrlChar(i, red, green, off)
+					time.wait(delay)
+
 
 					
 	#-------------------------------------------------------------------------------------
